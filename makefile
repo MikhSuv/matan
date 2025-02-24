@@ -1,4 +1,4 @@
-TARGET = matanI
+TARGET = main
 LATEX = pdflatex
 
 all: $(TARGET).pdf

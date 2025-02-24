@@ -1,0 +1,80 @@
+
+\documentclass[14pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[left=25mm, top=20mm, right=20mm, bottom=20mm]{geometry}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+
+\usepackage{misccorr}%номера разделов
+
+\usepackage[unicode]{hyperref}
+
+\usepackage{wrapfig}
+
+\everymath{\displaystyle}
+
+\usepackage{asymptote}
+
+\setlength{\headheight}{15pt}
+\linespread{1.5}
+
+\usepackage[normalem]{ulem}%зачеркнутый текст
+
+\usepackage{amsthm}%оформление теорем
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{corollary}{Следствие}[theorem]
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem*{statement}{Утверждение}
+\theoremstyle{remark}
+\newtheorem*{remark}{Замечание}
+
+%Настройка списков
+\usepackage{enumitem}
+\newenvironment{oenum}%
+{\begin{enumerate}[label=\arabic*$^\circ$]}{\end{enumerate}}
+
+\hypersetup{colorlinks=true,linkcolor=blue,filecolor=magenta, urlcolor=cyan}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\usepackage{fancybox,fancyhdr} %колонтитулы
+\pagestyle{fancy}%нумерация страниц
+\fancyhead{}
+\setcounter{page}{1}
+\fancyhead[L]{Математический анализ I}
+
+\begin{document}
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\begin{center}
+\Huge{Математический анализ} \\[2cm]
+\LARGE{1 семестр} \\
+\end{center}
+\hfill \break
+\begin{center} \today \end{center}
+\thispagestyle{empty}
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\selectlanguage{Russian}
+
+\input{introduction.tex}
+
+\begin{thebibliography}{2}
+\bibitem{Gromov} \textbf{Виноградов О.Л., Громов А. Л.} Курс математического анализа: В 5 частях.
+\bibitem{Zorich} \textbf{Зорич В. А.} Математический анализ.
+\bibitem{Fikhten} \textbf{Фихтенгольц Г. М.} Курс дифференциального и интегрального исчисления: В 3 т.
+\bibitem{Hrabrov} \href{https://stepik.org/course/716/info}{Математический анализ(stepic)}
+\end{thebibliography}
+\end{document}
+
