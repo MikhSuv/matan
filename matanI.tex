@@ -192,10 +192,33 @@ $(x \mathcal{R} y \wedge y \mathcal{R} x) \Rightarrow x \mathcal{R} x$, что �
 
 \subsection{Вещественные числа}
 \begin{definition}
-Множество $\mathbb{R}$ называется множеством вещественных чисел, а его элементы -- вещественными числами, если выполнен следующий набор условий,
-называемый аксиоматикой вещественных чисел:
+    Множество $\mathbb{R}$ называется множеством \textbf{вещественных чисел}, а его элементы -- \textbf{вещественными числами}, если выполнен следующий набор условий,
+    называемый \textit{аксиоматикой вещественных чисел}:
 \begin{itemize}
-    \item[1)] Есть \textbf{две операции} такие, что $(\mathbb{R}, +, \cdot)$ -- поле, то есть выполнены аксиомы поля:
+    \item[I.] Есть две бинарные операции такие, что $(\mathbb{R}, +, \cdot)$ -- \textbf{поле}, то есть выполнены \textbf{аксиомы поля}:
+    \begin{itemize}
+        \item[I.1] $\forall x,y,z \in \mathbb{R} \ \ x + (y + z) = (x + y) + z$
+        \item[I.2] $\forall x,y \in \mathbb{R} \ \ x + y = y + x$
+        \item[I.3] $\exists 0 \in \mathbb{R} : \forall x \in \mathbb{R} \ \ x + 0 = x$
+        \item[I.4] $\forall x \in \mathbb{R} \ \exists (-x) \in \mathbb{R} \ : \ x + (-x) = 0$
+        \item[I.5] $\forall x,y,z \in \mathbb{R} \ \ x \cdot (y \cdot z) = (x \cdot y) \cdot z$
+        \item[I.6] $\forall x,y \in \mathbb{R} \ \ x \cdot y = y \cdot x$
+        \item[I.7] $\exists 1 \in \mathbb{R} : \forall x \in \mathbb{R} \ \ x \cdot 1 = x$
+        \item[I.8] $\forall x \in \mathbb{R} \backslash \{0\} \ \exists (x^{-1}) \in \mathbb{R} \ : \ x \cdot x^{-1} = 1$
+        \item[I.9] $\forall x,y,z \in \mathbb{R} \ \ (x + y) \cdot z = x \cdot z + y \cdot z $
+    \end{itemize}
+    \item[II.] $\mathbb{R}$ -- \textbf{линейно упорядоченное множество}, то есть между элементами $\mathbb{R}$ определено бинарное отношение $\leq$ со следующими свойствами:
+    \begin{itemize}
+        \item[II.1] $\forall x,y \in \mathbb{R} \ \ ((x \leq y) \vee (y \leq x)) \equiv 1$
+        \item[II.2] $\forall x \in \mathbb{R} \ \ x \leq x$
+        \item[II.3] $\forall x, y \in \mathbb{R} \ \ (x \leq y \wedge  y \leq x) \Rightarrow (x = y)$
+        \item[II.4] $\forall x, y, z \in \mathbb{R} \ \ (x \leq y \wedge  y \leq z) \Rightarrow (x \leq z)$
+        \item[II.5] $\forall x, y, z \in \mathbb{R} \ \ x \leq y \Rightarrow x + z \leq y + z$
+        \item[II.6] $0 \leq x \wedge 0 \leq y \Rightarrow 0 \leq x \cdot y$
+    \end{itemize}
+    \item[III.] \textbf{Аксиома полноты (непрерывности)} \\
+        Если $A$ и $B$ -- непустые подмножества $\mathbb{R}$ и $\forall a \in A, \forall b \in B$ верно, что $a \leq b$, тогда $\exists c \in \mathbb{R} \ : \ a \leq c \leq b$.
+        
 \end{itemize}
 \end{definition}
 
