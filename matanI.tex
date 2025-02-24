@@ -1,0 +1,209 @@
+\documentclass[14pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[left=25mm, top=20mm, right=20mm, bottom=20mm]{geometry}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+
+\usepackage{misccorr}%номера разделов
+
+\usepackage[unicode]{hyperref}
+
+\usepackage{wrapfig}
+
+\everymath{\displaystyle}
+
+\usepackage{asymptote}
+
+\setlength{\headheight}{15pt}
+\linespread{1.5}
+
+\usepackage[normalem]{ulem}%зачеркнутый текст
+
+\usepackage{amsthm}%оформление теорем
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{corollary}{Следствие}[theorem]
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem*{statement}{Утверждение}
+\theoremstyle{remark}
+\newtheorem*{remark}{Замечание}
+
+%Настройка списков
+\usepackage{enumitem}
+\newenvironment{oenum}%
+{\begin{enumerate}[label=\arabic*$^\circ$]}{\end{enumerate}}
+
+\hypersetup{colorlinks=true,linkcolor=blue,filecolor=magenta, urlcolor=cyan}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\usepackage{fancybox,fancyhdr} %колонтитулы
+\pagestyle{fancy}%нумерация страниц
+\fancyhead{}
+\setcounter{page}{1}
+\fancyhead[L]{Математический анализ I}
+
+\begin{document}
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\begin{center}
+\Huge{Математический анализ} \\[2cm]
+\LARGE{1 семестр} \\
+\end{center}
+\hfill \break
+\begin{center} \today \end{center}
+\thispagestyle{empty}
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\selectlanguage{Russian}
+
+\section{Введение}
+\subsection{Элементы математической логики}
+Используем распространенные символы математической логики $\neg, \wedge, \vee, \Rightarrow, \Leftrightarrow$ для обозначения соответственно отрицания <<не>> и связок <<и>>, <<или>>, <<влечет>>, <<равносильно>>.
+
+
+Записи $A \Rightarrow B$, означающей, что $A$ влечет $B$ или, что то же самое, $B$ следует из $A$, мы часто будем придавать другую словесную интерпретацию, говоря, что $B$ есть \textit{необходимый признак} или \textit{необходимое условие} $A$ и, в свою очередь, $A$ -- \textit{достаточное условие} или \textit{достаточный признак} $B$.
+Таким образом, соотношение $A \Leftrightarrow B$ можно прочитать любым из следующих способов:
+\begin{itemize}
+    \item[] $A$ необходимо и достаточно для $B$;
+    \item[] $A$ тогда и только тогда, когда $B$;
+    \item[] $A$, если и только если $B$;
+    \item[] $A$ равносильно $B$.
+\end{itemize}
+
+Некоторые логические законы:
+\begin{itemize}
+    \item[] $(A \Leftrightarrow B) \equiv ((A \Rightarrow B) \wedge (B \Rightarrow A))$
+    \item[] $(A \Rightarrow B) \equiv (\neg A \vee B) \equiv (B \vee \neg A) \equiv (\neg (\neg B) \vee \neg A) \equiv (\neg B \Rightarrow \neg A)$
+    \item[] $\neg (A \vee B) \equiv (\neg A \wedge \neg B)$
+    \item[] $\neg (A \wedge B) \equiv (\neg A \vee \neg B)$
+\end{itemize}
+
+\subsection{Наивная теория множеств}
+<<Под \textit{множеством} мы понимаем объединение в одно целое определенных, вполне различимых объектов нашей интуиции или нашей мысли>> -- так описал понятие «множество» Георг Кантор, основатель теории множеств. Это описание нельзя назвать определением, поскольку оно апеллирует к понятиям, ранее не определенным.
+
+
+Основные предпосылки канторовской (<<наивной>>) теории множеств:
+\begin{oenum}
+    \item множество может состоять из любых различимых объектов;
+    \item множество однозначно определяется набором составляющих его объектов;
+    \item любое свойство определяет множество объектов, которые этим свойством обладают.
+\end{oenum}
+
+Если $x$ -- объект, $P$ -- свойство, $P(x)$ -- обозначение того, что x обладает свойством $P$, то через $\{ x\ \vert\ P(x) \}$ обозначают весь класс объектов, обладающих свойством $P$.
+Объекты, составляющие класс или множество, называют \textit{элементами} класса или множества. Слова <<класс>>, <<семейство>>, <<совокупность>>, <<набор>> в наивной теории
+множеств употребляют как синонимы термина <<множество>>.
+
+\begin{remark}[Парадокс Рассела]
+Множество всех множеств -- противоречивое понятие.
+\end{remark}
+\begin{proof}
+Пусть $K = \left\{M  \  \vert \ P(M) \ \right\}$, где $P(M)$ означает, что $M$ не содержит себя в качестве своего элемента.
+
+Тогда, если $K$ -- множество, то верно или $P(K)$, или $\neg P(K)$.
+Действительно, $P(K)$ невозможно, так как из определения K тогда бы следовало, что $K$ содержит $K$, то есть что верно $\neg P(K)$; с другой стороны, $\neg P(K)$ тоже невозможно, поскольку это означает,
+что $K$ содержит $K$, а это противоречит определению $K$ как класса тех множеств, которые сами себя не содержат.
+Следовательно, $K$ -- не множество.
+\end{proof}
+То, что $x$ пренадлежит множеству $X$, то есть является его элементом, обозначают $x \in X$ (или $X \ni x$), а отрицание этого утверждения $x \notin X$ (или $X \not \ni x$).
+
+Горорят, что множества \textit{равны}, если они состоят из одних и тех же элементов, то есть $A = B \ \Leftrightarrow \ \forall x ((x \in A) \Leftrightarrow (x \in B))$.
+Отрицание равенства обозначают $A \not = B$.
+
+Говорят, что $A$ является \textit{подмножеством} множества $B$, или что $B$ включает $A$, или что $B$ содержит $A$, если каждый элемент $A$ является элеметнтом множества $B$. Обозначают $A \subset B$ или $A \supset B$.
+$$(A \subset B) := \forall x ((x \in A) \Rightarrow (x \in B)).$$
+Если $A \subset B$ и $A \not = B$, то будем говорить, что включение $A \subset B$ \textit{строгое} или что $A$ -- \textit{собственное} подмножество $B$. Используя приведенные определения, можно заключить, что
+$$(A = B) \Leftrightarrow (A \subset B) \wedge (B \subset A).$$
+
+\textit{Пустым} называется множество, несодержащее элементов. Обозначается символом $\varnothing$. Пустое множество является подмножеством любого множества.
+
+Основные операции над множествами:
+\begin{itemize}
+\item[] Пересечение множеств $(A \cap B) := \{x \ \vert \  x \in A \wedge x \in B\}$
+\item[] Объединение множеств $(A \cup B) := \{x \ \vert \ x \in A \vee x \in B\}$
+\item[] Разность множнеств $(A \backslash B) := \{x \ \vert \ x \in A \wedge x \notin B\}$
+\item[] Симметрическая разность $(A \triangle B) := (A \backslash B) \cup (B \backslash A)$
+\item[] Дизъюнктное объединение $A \sqcup B = A \cup B \ \Leftrightarrow \ A \cap B = \varnothing$
+\item[] Объединение N множеств $\bigcup_{n = 1}^{N} A_n := \left\{x \ \vert \ \exists n_0 : x \in A_{n_0}\right\}$
+\item[] Пересечение N множеств $\bigcap_{n = 1}^{N} A_n := \left\{x \ \vert \ \forall n \in \{1, ..., N\} : x \in A_{n}\right\}$
+\end{itemize}
+Пусть $\{X_\alpha\}_{\alpha \in I}$ -- семейство множеств, тогда
+\begin{itemize}
+\item[] Объединение семейства множеств $\bigcup_{\alpha \in I} X_\alpha := \left\{x \ \vert \ \exists \alpha \in I : x \in X_{\alpha}\right\}$
+\item[] Пересечение семейства множеств $\bigcap_{\alpha \in I} X_\alpha := \left\{x \ \vert \ \forall \alpha \in I : x \in X_{\alpha}\right\}$
+\end{itemize}
+\begin{theorem}[Законы де Моргана]
+    Пусть $X$ -- множество, $\{A_\alpha\}_{\alpha \in I}$ -- семейство множеств. Тогда
+   \begin{equation}
+   X \backslash \left(\bigcup_{\alpha \in I} A_\alpha \right) = \bigcap_{\alpha \in I} X \backslash A_{\alpha}
+   \end{equation}
+   \begin{equation}
+   X \backslash \left(\bigcap_{\alpha \in I} A_\alpha \right) = \bigcup_{\alpha \in I} X \backslash A_{\alpha}
+   \end{equation}
+\end{theorem}
+\begin{proof}
+$$ X \backslash \left(\bigcup_{\alpha \in I} A_\alpha \right) = \left\{x \ \vert \ x \in X \wedge \forall \alpha \in I \ x \notin A_\alpha \right\}
+= \left\{x \ \vert \ \forall \alpha \in I \ x \in X \backslash A_\alpha \right\} = \bigcap_{\alpha \in I} X \backslash A_{\alpha}$$
+$$ X \backslash \left(\bigcap_{\alpha \in I} A_\alpha \right) = \left\{ x \ \vert \ x \in X \wedge \exists \alpha \in I \ x \notin A_\alpha \right\} =
+\left\{x \ \vert \ \exists \alpha \in I \ x \in X \backslash A_\alpha \right\} = \bigcup_{\alpha \in I} X \backslash A_{\alpha}$$
+\end{proof}
+\subsection{Декартово произведение множеств. Бинарные отношения}
+\begin{definition}
+Пусть $X$ и $Y$ -- множества. Множество образованное всеми упорядоченными парами $(x,y)$, первый член которых есть элемент из $X$, а второй -- элемент из $Y$, называется \textit{прямым} или \textit{декартовым произведением множеств} $X$ и $Y$.
+$$X \times Y := \{(x, y) \ \vert \ x \in X \wedge y \in Y\}$$
+Для семейства из $n$ множеств:
+$$A_1 \times A_2 \times ... \times A_n = \{(a_1, a_2, ..., a_n) \ \vert \ a_i \in A_i\}$$
+\end{definition}
+\begin{definition}
+\textit{Бинарным отношением} $\mathcal{R}$ на множестве $X$ называют любое подмножество $X \times X$.
+$$\mathcal{R} \subset X \times X$$
+То что $(x, y) \in \mathcal{R}$ обозначают $x \mathcal{R} y$.
+\end{definition}
+Свойства бинарных отношений:
+\begin{itemize}
+\item[1.] $\mathcal{R}$ -- рефлексивное, если $\forall x \in X \ x \mathcal{R} x$;
+\item[1'.] $\mathcal{R}$ -- иррефлексивное, если $\forall x \in X \ \neg (x \mathcal{R} x)$;
+\item[2.] $\mathcal{R}$ -- симметричное, если $\forall x,y \in X \ x \mathcal{R} y \Rightarrow y \mathcal{R} x$
+\item[2'.] $\mathcal{R}$ -- антисимметричное, если $\forall x,y \in X \ (x \mathcal{R} y \wedge y \mathcal{R} x) \Rightarrow x = y$
+\item[3.] $\mathcal{R}$ -- транзитивно, если $\forall x, y, z \in X (x \mathcal{R} y \wedge y \mathcal{R} z) \Rightarrow x \mathcal{R} z$
+\end{itemize}
+\begin{definition}
+Бинарное отношение, которое рефлексивно, симметрично и транзитивно, называется \textit{отношением эквивалентности}.
+\end{definition}
+\begin{statement}
+Если бинарное отношени иррефлексивно и транзитивно, то оно и антисимметрично.
+\end{statement}
+\begin{proof}
+O/п: Пусть $\mathcal{R}$ -- симметрично, то есть $\forall x,y \in X \ x \mathcal{R} y \Rightarrow y \mathcal{R} x$. Тогда по транзитивности
+$(x \mathcal{R} y \wedge y \mathcal{R} x) \Rightarrow x \mathcal{R} x$, что противоречит с иррефлексивностью.
+
+Следовательно, $\mathcal{R}$ -- антисимметрично.
+\end{proof}
+
+\subsection{Вещественные числа}
+\begin{definition}
+Множество $\mathbb{R}$ называется множеством вещественных чисел, а его элементы -- вещественными числами, если выполнен следующий набор условий,
+называемый аксиоматикой вещественных чисел:
+\begin{itemize}
+    \item[1)] Есть \textbf{две операции} такие, что $(\mathbb{R}, +, \cdot)$ -- поле, то есть выполнены аксиомы поля:
+\end{itemize}
+\end{definition}
+
+\begin{thebibliography}{2}
+\bibitem{Gromov} \textbf{Виноградов О.Л., Громов А. Л.} Курс математического анализа: В 5 частях.
+\bibitem{Zorich} \textbf{Зорич В. А.} Математический анализ.
+\bibitem{Fikhten} \textbf{Фихтенгольц Г. М.} Курс дифференциального и интегрального исчисления: В 3 т.
+\bibitem{Hrabrov} \href{https://stepik.org/course/716/info}{Математический анализ(stepic)}
+\end{thebibliography}
+\end{document}
+
